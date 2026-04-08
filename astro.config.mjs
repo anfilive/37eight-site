@@ -5,8 +5,6 @@ import tailwind from '@tailwindcss/vite';
 import { sanityIntegration } from '@sanity/astro';
 
 export default defineConfig({
-  // Удалили output: 'server' и adapter: netlify()
-  // Теперь сайт будет статическим и максимально надежным
   integrations: [
     react(),
     sitemap(),

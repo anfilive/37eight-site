@@ -1,17 +1,20 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
-import sanity from '@sanity/astro'; // Используем импорт по умолчанию
+import sanity from '@sanity/astro';
 
 export default defineConfig({
   integrations: [
     react(),
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
     sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
       studioPath: '/admin',
       useCdn: false,
+      apiVersion: '2021-03-25'
     }),
   ],
 });

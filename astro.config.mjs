@@ -1,19 +1,18 @@
-// @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import react from '@astrojs/react';
+import { sanityIntegration } from 'astro-sanity';
 
-import sitemap from "@astrojs/sitemap";
-import react from "@astrojs/react";
-import tailwindcss from "@tailwindcss/vite";
-
-// https://astro.build/config
 export default defineConfig({
-  site: "https://flux.com",
-  devToolbar: {
-    enabled: false, // <-- Correct way to disable the DevToolbar
-  },
-  integrations: [sitemap(), react()],
-
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  integrations: [
+    tailwind(),
+    react(),
+    sanityIntegration({
+      projectId: 'd4fi998k',
+      dataset: 'production',
+      apiVersion: '2024-04-08',
+      useCdn: false,
+      studioPath: '/admin', // Вот тут и будет жить твоя админка!
+    }),
+  ],
 });

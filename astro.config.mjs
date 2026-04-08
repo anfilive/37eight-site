@@ -1,17 +1,21 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
-import sanity from '@sanity/astro';
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@tailwindcss/vite';
+import { sanityIntegration } from '@sanity/astro';
 
 export default defineConfig({
   integrations: [
     react(),
-    tailwind(),
-    sanity({
+    sitemap(),
+    sanityIntegration({
       projectId: 'd4fi998k',
       dataset: 'production',
       studioPath: '/admin',
       useCdn: false,
     }),
   ],
+  vite: {
+    plugins: [tailwind()],
+  },
 });

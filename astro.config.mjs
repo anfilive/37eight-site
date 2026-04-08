@@ -13,24 +13,18 @@ export default defineConfig({
     sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
-      studio: {
-        enabled: false,
-        basePath: '/admin',
-      },
+      // Отключаем авто-генерацию, чтобы файл [...index].astro заработал
+      studio: { enabled: false }, 
     }),
   ],
   vite: {
     plugins: [tailwind()],
-    resolve: {
-      alias: {
-        // Это КРИТИЧЕСКИЙ костыль для исправления ошибки coreBehaviors в Vite 6
-        '@portabletext/editor/behaviors': '@portabletext/editor/lib/behaviors/index.js',
-        'lodash': 'lodash-es',
-      },
-    },
     ssr: {
-      // Заставляем Vite упаковать всё это внутрь серверного билда корректно
+      // Это лечит ошибку билда coreBehaviors
       noExternal: ['sanity', 'styled-components', 'lodash-es', '@portabletext/editor'],
+    },
+    optimizeDeps: {
+      include: ['@portabletext/editor/behaviors'],
     },
   },
 });

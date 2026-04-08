@@ -3,15 +3,13 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 
 export default defineConfig({
-  name: 'default',
   title: '37.Eight Studio',
 
-  // Твои данные из проекта
+  // Твои данные проекта
   projectId: 'd4fi998k',
   dataset: 'production',
 
-  // Это путь, по которому админка будет искать себя в браузере.
-  // Должно совпадать с папкой в src/pages/
+  // Путь должен строго совпадать с папкой в src/pages/
   basePath: '/admin', 
 
   plugins: [structureTool()],
@@ -32,8 +30,7 @@ export default defineConfig({
           {
             name: 'slug',
             type: 'slug',
-            title: 'URL адрес (ссылка)',
-            description: 'Нажми "Generate" после ввода заголовка',
+            title: 'URL адрес',
             options: {
               source: 'title',
               maxLength: 96,
@@ -50,7 +47,7 @@ export default defineConfig({
             type: 'image',
             title: 'Главное изображение',
             options: {
-              hotspot: true, // Позволяет выбирать центр композиции на фото
+              hotspot: true,
             },
           },
           {

@@ -1,41 +1,48 @@
-# Astro Blog Starter with Decap CMS
+<div align="center">
 
-This example is based on the official [Astro Starter Kit: Blog][starter],
-and adds the [Astro Decap CMS integration][integration].
+# Blog Template
 
-## Quick deploy
+A production-ready blog built with Astro, React, and Tailwind CSS.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)][deploy]
+· [Docs](https://flux-theme.online/tutorial) · [Support](mailto:hello@jsgbn.com)
 
-☝️ Click this button to copy this project to your own GitHub (or GitLab)
-account and set up continuous deployment with Netlify as if by magic. ✨
+</div>
 
-Once you’ve got the project set up, you do need to
-[activate Netlify Identity in the Netlify UI][identity] and then enable
-[“Git Gateway”][gateway] to allow e-mail/password authentication.
+---
 
-## Commands
+### Overview
 
-All commands are run from the root of the project, from a terminal:
+A complete blog with multiple layout styles, Sanity CMS integration for content management, privacy-first structure with compliance pages, and SEO-optimized output.
 
-| Command            | Action                                           |
-| :----------------- | :----------------------------------------------- |
-| `pnpm install`     | Installs dependencies                            |
-| `pnpm run dev`     | Starts local dev & Decap CMS proxy servers       |
-| `pnpm run build`   | Build your production site to `./dist/`          |
-| `pnpm run preview` | Serve `./dist/` & run the Decap CMS proxy server |
+### Features
 
-> **Note**
-> These commands are using [`pnpm`][pnpm], a fast and efficient package manager.
-> You can choose to use `npm` or `yarn` instead if you prefer, but remember to update the config in [`netlify.toml`](netlify.toml) to match.
+- Multiple post layout styles — bento grids, split views, asymmetric cards
+- Sanity CMS integration — write in the studio, publish to static pages
+- Category and tag system with dedicated index pages
+- Author profiles with bio and post archive
+- RSS feed and sitemap generation
+- Search with live filtering
+- Newsletter signup integration
+- Reading time and table of contents
+- Social sharing and Open Graph images
+- Privacy, terms, and compliance pages included
 
-[starter]: https://astro.new/blog?on=github
-[integration]: https://github.com/advanced-astro/astro-decap-cms
-[deploy]: https://app.netlify.com/start/deploy?repository=https://github.com/advanced-astro/astro-decap-cms-starter
-[identity]: https://docs.netlify.com/visitor-access/identity/
-[gateway]: https://docs.netlify.com/visitor-access/git-gateway/
-[pnpm]: https://pnpm.io/
+### Tech Stack
 
-## Aknowledgement
+`Astro` `React` `Tailwind CSS` `Sanity CMS`
 
-- [astro-netlify-cms-starter](https://github.com/delucis/astro-netlify-cms-starter)
+### Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+```

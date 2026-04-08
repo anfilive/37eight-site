@@ -7,12 +7,12 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   output: 'server',
   adapter: vercel(),
+  trailingSlash: 'always',
   integrations: [
     react(),
     sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
-      // Эта настройка сама создаст страницу /admin без твоего участия
       studio: {
         enabled: true,
         basePath: '/admin',
@@ -22,11 +22,14 @@ export default defineConfig({
   vite: {
     plugins: [tailwind()],
     ssr: {
-      // Это лечит ошибку "coreBehaviors is not exported"
-      noExternal: ['sanity', 'styled-components', '@sanity/visual-editing', 'lodash']
+      // Это ВАЖНО: говорим серверу не трогать пакеты админки
+      external: ['sanity', 'styled-components', '@portabletext/editor']
     },
-    optimizeDeps: {
-      exclude: ['sanity']
+    resolve: {
+      alias: {
+        // Решает проблемы с импортом lodash
+        'lodash': 'lodash'
+      }
     }
   },
 });

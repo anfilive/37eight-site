@@ -2,17 +2,16 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@tailwindcss/vite';
-import { sanityIntegration } from '@sanity/astro'; // Используем именованный импорт
+import sanity from '@sanity/astro'; // Возвращаем импорт по умолчанию
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  // В Astro 6 с адаптером Vercel режим выставляется сам, 
-  // но админке часто нужен серверный адаптер для работы роутинга.
+  // В Astro 6 адаптер Vercel сам понимает режим работы
   adapter: vercel(), 
   integrations: [
     react(),
     sitemap(),
-    sanityIntegration({
+    sanity({ // Используем просто как sanity()
       projectId: 'd4fi998k',
       dataset: 'production',
       studioPath: '/admin',

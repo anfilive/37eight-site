@@ -1,15 +1,16 @@
 ---
-// src/pages/studio/[...index].astro
+// src/pages/admin/[...index].astro
 import { Studio } from 'sanity';
-import config from '../../../sanity.config'; // Проверьте, что путь до sanity.config.ts верный
+import config from '../../../sanity.config'; // Путь из src/pages/admin/ в корень
 ---
 
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Панель управления 37.Eight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>37.Eight | Панель управления</title>
   </head>
   <body>
     <Studio config={config} client:only="react" />
@@ -17,10 +18,17 @@ import config from '../../../sanity.config'; // Проверьте, что пу�
 </html>
 
 <style is:global>
-  /* Чтобы админка была на весь экран и не конфликтовала со стилями темы */
-  html, body {
-    height: 100vh;
+  /* Сбрасываем все стили темы, чтобы админка была на весь экран */
+  html,
+  body {
+    height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #f6f6f6; /* Стандартный фон Sanity */
+  }
+
+  /* Исправляем возможные наложения от глобальных стилей темы */
+  #sanity {
+    height: 100vh;
   }
 </style>

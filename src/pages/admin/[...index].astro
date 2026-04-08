@@ -1,0 +1,26 @@
+---
+// src/pages/studio/[...index].astro
+import { Studio } from 'sanity';
+import config from '../../../sanity.config'; // Проверьте, что путь до sanity.config.ts верный
+---
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Панель управления 37.Eight</title>
+  </head>
+  <body>
+    <Studio config={config} client:only="react" />
+  </body>
+</html>
+
+<style is:global>
+  /* Чтобы админка была на весь экран и не конфликтовала со стилями темы */
+  html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+</style>

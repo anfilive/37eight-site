@@ -21,13 +21,19 @@ export default defineConfig({
   vite: {
     plugins: [tailwind()],
     ssr: {
-      // Это заставляет Vite упаковывать эти библиотеки внутрь билда
-      noExternal: [/sanity/, /@sanity\//, /@portabletext\//, 'styled-components', 'lodash'],
+      // Мы говорим Vite НЕ трогать эти пакеты при сборке сервера
+      external: ['@portabletext/editor', 'sanity', 'styled-components']
     },
     resolve: {
       alias: {
-        // Решает проблему с импортом лодаша на 75-й строке
+        // Перенаправляем все запросы lodash на lodash-es
         'lodash': 'lodash-es',
+        'lodash/startCase.js': 'lodash-es/startCase.js',
+      },
+    },
+    build: {
+      commonjsOptions: {
+        include: [/node_modules/],
       },
     },
   },

@@ -4,11 +4,10 @@ import { deskTool } from 'sanity/desk';
 export default defineConfig({
   name: 'default',
   title: '37.Eight Studio',
-
-  projectId: 'd4fi998k', // Твой ID проекта
+  projectId: 'd4fi998k',
   dataset: 'production',
 
-  basePath: '/admin', // КРИТИЧНО: говорит админке, где её дом
+  basePath: '/admin', // ЭТО КРИТИЧНО! Должно совпадать с studioPath
 
   plugins: [deskTool()],
 
@@ -17,11 +16,10 @@ export default defineConfig({
       {
         name: 'post',
         type: 'document',
-        title: 'Журнал (Статьи)',
+        title: 'Журнал',
         fields: [
           { name: 'title', type: 'string', title: 'Заголовок' },
-          { name: 'content', type: 'text', title: 'Текст статьи' },
-          { name: 'image', type: 'image', title: 'Главное фото', options: { hotspot: true } }
+          { name: 'image', type: 'image', title: 'Обложка' }
         ]
       }
     ],

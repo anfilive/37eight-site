@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import BaseHead from "../components/global/BaseHead.astro";
+
+import journalData from "../data/journal.json";
+
+const featured = journalData[0];
+const rest = journalData.slice(1);
+---
+
+<BaseLayout>
+  <BaseHead />
+
+  {/* Page header */}
+  <section class="w-full max-w-8xl mx-auto px-4 pt-10 pb-6">
+    <hr class="mb-6 border-t border-gray-200" />
+    <div class="flex items-end justify-between">
+      <h1 class="text-4xl md:text-6xl font-light grotesque-font text-gray-900 leading-none">
+        Journal
+      </h1>
+      <span class="text-xs text-gray-400 font-light uppercase tracking-widest mb-1">
+        {journalData.length} articles
+      </span>
+    </div>
+    <p class="text-sm font-light text-gray-400 mt-4 max-w-xs leading-relaxed">
+      Exploring the engineering ideas and innovations behind Dyson technology.
+    </p>
+  </section>
+
+  {/* Featured article */}
+  {featured && (
+    <section class="w-full max-w-8xl mx-auto px-4 pb-12">
+      <a href={`/journal/${featured.slug}`} class="group grid grid-cols-1 md:grid-cols-2 gap-0 border border-gray-100 rounded-xl overflow-hidden hover:border-gray-300 transition-colors duration-200">
+        <div class="relative overflow-hidden bg-[#f5ebda] aspect-[4/3] md:aspect-auto">
+          <img
+            loading="lazy"
+            src={featured.image}
+            alt={featured.title}
+            class="w-full h-full object-contain p-8 transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+        <div class="flex flex-col justify-between p-8 md:p-12">
+          <div class="flex flex-col gap-4">
+            <span class="text-xs text-gray-400 uppercase tracking-widest font-light">Featured</span>
+            <h2 class="text-2xl md:text-3xl font-light grotesque-font text-gray-900 leading-snug">
+              {featured.title}
+            </h2>
+            <p class="text-sm font-light text-gray-400 leading-relaxed max-w-sm">
+              {featured.description}
+            </p>
+          </div>
+          <div class="flex items-center gap-2 mt-8">
+            <span class="text-sm font-light text-gray-900">Read article</span>
+            <span class="text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200">↗</span>
+          </div>
+        </div>
+      </a>
+    </section>
+  )}
+
+  {/* Article grid */}
+  <section class="w-full max-w-8xl mx-auto px-4 pb-20">
+    <hr class="mb-6 border-t border-gray-200" />
+    <h2 class="text-xs text-gray-400 uppercase tracking-widest font-light mb-8">All articles</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12 grotesque-font">
+      {rest.map((item) => (
+        <a href={`/journal/${item.slug}`} class="group flex flex-col gap-0">
+          <div class="overflow-hidden aspect-[4/3]">
+            <img
+              loading="lazy"
+              src={item.image}
+              alt={item.title}
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <div class="pt-4 flex flex-col gap-2">
+            <h3 class="text-sm font-light text-gray-900 flex items-center gap-1">
+              {item.title}
+              <span aria-hidden="true" class="text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200">↗</span>
+            </h3>
+            <p class="text-xs font-light text-gray-400 leading-relaxed line-clamp-2">
+              {item.description}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

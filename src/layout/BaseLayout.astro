@@ -1,0 +1,31 @@
+---
+import BaseHead from "../components/global/BaseHead.astro";
+import Navbar from "../components/global/Navigation.jsx";
+import Footer from "../components/global/Footer.jsx";
+
+import navigationLinks from "../data/navigation.json";
+import footerData from "../data/footer.json";
+
+const { title } = Astro.props;
+---
+
+<html
+  lang="en"
+  class="scroll-smooth selection:bg-accent-500 selection:text-gray-500 no-touchevents hydrated"
+>
+  <head>
+    <BaseHead title={title} />
+  </head>
+  <body class="flex flex-col min-h-svh">
+    <div id="smooth-wrapper">
+      <div id="smooth-content" class="flex flex-col min-h-svh">
+        <Navbar data={navigationLinks} client:load />
+        <main class="grow"><slot /></main>
+        <Footer data={footerData} />
+      </div>
+    </div>
+    <script>
+      import "../scripts/animations.js";
+    </script>
+  </body>
+</html>

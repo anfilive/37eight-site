@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import BaseHead from "../components/global/BaseHead.astro";
+import contactData from "../data/contact.json";
+---
+
+<BaseLayout>
+  <BaseHead />
+  <section class="w-full max-w-8xl mx-auto px-4 py-16">
+    <hr class="mb-6 border-t border-gray-200" />
+    <span class="text-xs text-gray-400 uppercase tracking-widest font-light">
+      {contactData.label}
+    </span>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mt-10">
+      <div class="flex flex-col gap-6">
+        <h1 class="text-4xl md:text-5xl font-light grotesque-font text-gray-900 leading-tight">
+          {contactData.title}
+        </h1>
+        <p class="text-sm font-light text-gray-500 leading-relaxed max-w-sm">
+          {contactData.description}
+        </p>
+        <div class="flex flex-col gap-4 mt-4">
+          {contactData.details.map((d) => (
+            <div class="flex flex-col gap-0.5">
+              <span class="text-xs text-gray-400 uppercase tracking-widest font-light">{d.label}</span>
+              <span class="text-sm font-light text-gray-800">{d.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <form
+        method="POST"
+        action="/api/contact"
+        class="flex flex-col gap-4"
+      >
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1">
+            <label for="first" class="text-xs text-gray-400 font-light uppercase tracking-widest">First name</label>
+            <input
+              id="first"
+              type="text"
+              name="first"
+              required
+              class="px-4 py-3 border border-gray-200 rounded text-sm font-light focus:outline-none focus:border-gray-400 bg-transparent"
+              placeholder="James"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="last" class="text-xs text-gray-400 font-light uppercase tracking-widest">Last name</label>
+            <input
+              id="last"
+              type="text"
+              name="last"
+              required
+              class="px-4 py-3 border border-gray-200 rounded text-sm font-light focus:outline-none focus:border-gray-400 bg-transparent"
+              placeholder="Dyson"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="email" class="text-xs text-gray-400 font-light uppercase tracking-widest">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            class="px-4 py-3 border border-gray-200 rounded text-sm font-light focus:outline-none focus:border-gray-400 bg-transparent"
+            placeholder="james@example.com"
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="subject" class="text-xs text-gray-400 font-light uppercase tracking-widest">Subject</label>
+          <input
+            id="subject"
+            type="text"
+            name="subject"
+            class="px-4 py-3 border border-gray-200 rounded text-sm font-light focus:outline-none focus:border-gray-400 bg-transparent"
+            placeholder="Product enquiry"
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="message" class="text-xs text-gray-400 font-light uppercase tracking-widest">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows="5"
+            class="px-4 py-3 border border-gray-200 rounded text-sm font-light focus:outline-none focus:border-gray-400 bg-transparent resize-none"
+            placeholder="Tell us how we can help..."
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="self-start px-8 py-3 bg-gray-900 text-white text-sm font-light rounded hover:bg-gray-700 transition"
+        >
+          Send message
+        </button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

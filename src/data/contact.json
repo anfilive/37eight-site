@@ -1,0 +1,10 @@
+{
+  "label": "Get in touch",
+  "title": "We'd love to hear from you.",
+  "description": "Whether you have a question about a product, need support, or just want to say hello — our team is here.",
+  "details": [
+    { "label": "Email", "value": "support@dyson.com" },
+    { "label": "Phone", "value": "+44 (0) 800 345 7788" },
+    { "label": "Hours", "value": "Mon – Fri, 8am – 8pm GMT" }
+  ]
+}

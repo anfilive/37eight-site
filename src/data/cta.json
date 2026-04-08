@@ -1,0 +1,13 @@
+{
+  "label": "Inspired updates",
+  "title": "Stay tuned for  updates?",
+  "placeholder": "Enter your email",
+  "button": "Subscribe",
+  "count": "1.5k+",
+  "note": "Already Drammed in!",
+  "avatars": [
+    "https://randomuser.me/api/portraits/men/32.jpg",
+    "https://randomuser.me/api/portraits/women/44.jpg",
+    "https://randomuser.me/api/portraits/men/65.jpg"
+  ]
+}

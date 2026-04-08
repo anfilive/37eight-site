@@ -1,0 +1,36 @@
+{
+  "label": "Why Dyson",
+  "title": "Engineering that goes further",
+  "items": [
+    {
+      "icon": "⚙️",
+      "title": "Precision Engineering",
+      "description": "Every component is designed to exacting standards, with tolerances measured in microns."
+    },
+    {
+      "icon": "🌀",
+      "title": "Cyclone Technology",
+      "description": "Patented multi-cyclone separation captures fine dust and allergens that others miss."
+    },
+    {
+      "icon": "🔋",
+      "title": "Long-Run Battery",
+      "description": "Intelligent power management extends runtime without sacrificing suction performance."
+    },
+    {
+      "icon": "🌿",
+      "title": "HEPA Filtration",
+      "description": "Captures 99.97% of particles as small as 0.3 microns — expelling cleaner air."
+    },
+    {
+      "icon": "📡",
+      "title": "Smart Connectivity",
+      "description": "Wi-Fi and app-enabled products that learn your habits and adapt automatically."
+    },
+    {
+      "icon": "🔧",
+      "title": "Modular Design",
+      "description": "Tools and accessories that click together intuitively, built to outlast the rest."
+    }
+  ]
+}

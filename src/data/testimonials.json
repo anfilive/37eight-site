@@ -1,0 +1,20 @@
+{
+  "label": "Customer Stories",
+  "items": [
+    {
+      "quote": "I've owned Dyson products for over a decade. The engineering consistency across generations is remarkable — they just keep getting better.",
+      "name": "Sarah M.",
+      "role": "Interior Designer, London"
+    },
+    {
+      "quote": "The suction power is unreal. I switched from a legacy brand and there's no comparison. This machine makes cleaning feel effortless.",
+      "name": "James K.",
+      "role": "Homeowner, New York"
+    },
+    {
+      "quote": "As someone with severe allergies, the HEPA filtration has genuinely changed my quality of life. The air in my flat feels noticeably cleaner.",
+      "name": "Priya N.",
+      "role": "Architect, Singapore"
+    }
+  ]
+}

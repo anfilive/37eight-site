@@ -1,39 +1,25 @@
----
-// src/pages/admin/[...index].astro
-import { Studio } from 'sanity';
-import config from '../../../sanity.config';
----
-
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>37.Eight | Admin Studio</title>
-    <meta name="robots" content="noindex, nofollow" />
-  </head>
-  <body>
-    <Studio config={config} client:only="react" />
-  </body>
-</html>
-
-<style is:global>
-  /* Важно: сбрасываем стили темы Dyson, чтобы админка 
-     занимала 100% экрана и выглядела чисто.
-  */
-  html,
-  body {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #f6f6f6;
+{
+  "name": "37eight-site",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.0",
+    "@astrojs/sitemap": "3.7.0",
+    "@astrojs/vercel": "10.0.4",
+    "@sanity/astro": "3.3.1",
+    "@tailwindcss/vite": "4.2.2",
+    "astro": "6.1.5",
+    "gsap": "3.14.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "3.99.0",
+    "styled-components": "6.1.15",
+    "tailwindcss": "4.2.2"
   }
-
-  /* Если в теме Dyson есть глобальные отступы или 
-     специфические шрифты для body, этот блок их нейтрализует внутри админки.
-  */
-  #sanity {
-    height: 100vh;
-  }
-</style>
+}

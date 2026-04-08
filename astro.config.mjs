@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import sitemap from '@astrojs/sitemap';
 import tailwind from '@tailwindcss/vite';
 import sanity from '@sanity/astro'; 
 import vercel from '@astrojs/vercel';
@@ -8,33 +7,26 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   output: 'server',
   adapter: vercel(),
-  trailingSlash: 'always',
   integrations: [
     react(),
-    sitemap(),
     sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
-      useCdn: false,
+      // Эта настройка сама создаст страницу /admin без твоего участия
+      studio: {
+        enabled: true,
+        basePath: '/admin',
+      },
     }),
   ],
   vite: {
     plugins: [tailwind()],
     ssr: {
-      // Мы говорим Vite НЕ трогать эти пакеты при сборке сервера
-      external: ['@portabletext/editor', 'sanity', 'styled-components']
+      // Это лечит ошибку "coreBehaviors is not exported"
+      noExternal: ['sanity', 'styled-components', '@sanity/visual-editing', 'lodash']
     },
-    resolve: {
-      alias: {
-        // Перенаправляем все запросы lodash на lodash-es
-        'lodash': 'lodash-es',
-        'lodash/startCase.js': 'lodash-es/startCase.js',
-      },
-    },
-    build: {
-      commonjsOptions: {
-        include: [/node_modules/],
-      },
-    },
+    optimizeDeps: {
+      exclude: ['sanity']
+    }
   },
 });

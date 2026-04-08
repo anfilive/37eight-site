@@ -6,7 +6,7 @@ import sanity from '@sanity/astro';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  // Переключаем в 'server', чтобы админка могла работать на Vercel
+  // Это главный ключ! Переключаем в серверный режим для работы админки
   output: 'server', 
   adapter: vercel(), 
   integrations: [

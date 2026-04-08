@@ -1,7 +1,7 @@
 ---
 // src/pages/admin/[...index].astro
 import { Studio } from 'sanity';
-import config from '../../../sanity.config'; // Путь из src/pages/admin/ в корень
+import config from '../../../sanity.config';
 ---
 
 <!DOCTYPE html>
@@ -9,8 +9,8 @@ import config from '../../../sanity.config'; // Путь из src/pages/admin/ �
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>37.Eight | Панель управления</title>
+    <title>37.Eight | Admin Studio</title>
+    <meta name="robots" content="noindex, nofollow" />
   </head>
   <body>
     <Studio config={config} client:only="react" />
@@ -18,16 +18,21 @@ import config from '../../../sanity.config'; // Путь из src/pages/admin/ �
 </html>
 
 <style is:global>
-  /* Сбрасываем все стили темы, чтобы админка была на весь экран */
+  /* Важно: сбрасываем стили темы Dyson, чтобы админка 
+     занимала 100% экрана и выглядела чисто.
+  */
   html,
   body {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #f6f6f6; /* Стандартный фон Sanity */
+    overflow: hidden;
+    background-color: #f6f6f6;
   }
 
-  /* Исправляем возможные наложения от глобальных стилей темы */
+  /* Если в теме Dyson есть глобальные отступы или 
+     специфические шрифты для body, этот блок их нейтрализует внутри админки.
+  */
   #sanity {
     height: 100vh;
   }

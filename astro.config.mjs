@@ -2,20 +2,20 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@tailwindcss/vite';
-import { sanityIntegration } from '@sanity/astro'; // Проверь именно этот импорт
+import sanity from '@sanity/astro'; 
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  // Режим 'server' обязателен для работы админки на Vercel
-  output: 'server', 
-  adapter: vercel(), 
+  output: 'server',
+  adapter: vercel(),
+  trailingSlash: 'always', // Это поможет избежать 404 на /admin
   integrations: [
     react(),
     sitemap(),
-    sanityIntegration({
+    sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
-      studioPath: '/admin', // Это адрес двери
+      studioPath: '/admin',
       useCdn: false,
     }),
   ],
@@ -23,4 +23,3 @@ export default defineConfig({
     plugins: [tailwind()],
   },
 });
- 

@@ -1,15 +1,14 @@
 import { defineConfig } from 'sanity';
-import { deskTool } from 'sanity/desk';
+import { structureTool } from 'sanity/structure'; // Обновленный инструмент
 
 export default defineConfig({
   name: 'default',
   title: '37.Eight Studio',
   projectId: 'd4fi998k',
   dataset: 'production',
+  basePath: '/admin', 
 
-  basePath: '/admin', // ЭТО КРИТИЧНО! Должно совпадать с studioPath
-
-  plugins: [deskTool()],
+  plugins: [structureTool()], // Используем новый стандарт
 
   schema: {
     types: [
@@ -19,7 +18,7 @@ export default defineConfig({
         title: 'Журнал',
         fields: [
           { name: 'title', type: 'string', title: 'Заголовок' },
-          { name: 'image', type: 'image', title: 'Обложка' }
+          { name: 'content', type: 'text', title: 'Текст статьи' }
         ]
       }
     ],

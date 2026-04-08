@@ -6,15 +6,12 @@ import sanity from '@sanity/astro';
 export default defineConfig({
   integrations: [
     react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
+    tailwind(),
     sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
       studioPath: '/admin',
       useCdn: false,
-      apiVersion: '2021-03-25'
     }),
   ],
 });

@@ -1,18 +1,20 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 import tailwind from '@tailwindcss/vite';
-import { sanityIntegration } from '@sanity/astro';
-import netlify from '@astrojs/netlify'; // Добавили адаптер
+import sanity from '@sanity/astro'; // Берем импорт по умолчанию
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
-  output: 'server', // Это переключает сайт в режим "умного" сервера
-  adapter: netlify(), // Это связывает Astro и Netlify
+  output: 'server',
+  adapter: netlify(),
   integrations: [
     react(),
-    sanityIntegration({
+    sitemap(),
+    sanity({ // Используем просто как sanity
       projectId: 'd4fi998k',
       dataset: 'production',
-      studioPath: '/admin', // Путь к твоей админке
+      studioPath: '/admin',
       useCdn: false,
     }),
   ],

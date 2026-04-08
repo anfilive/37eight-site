@@ -13,18 +13,21 @@ export default defineConfig({
     sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
-      // Отключаем авто-генерацию, чтобы файл [...index].astro заработал
-      studio: { enabled: false }, 
+      studio: { enabled: false }, // Отключаем авто-админку, используем ручную
     }),
   ],
   vite: {
     plugins: [tailwind()],
-    ssr: {
-      // Это лечит ошибку билда coreBehaviors
-      noExternal: ['sanity', 'styled-components', 'lodash-es', '@portabletext/editor'],
+    resolve: {
+      alias: {
+        // МЫ ТЫКАЕМ ВАЙТ НОСОМ В НУЖНЫЙ ФАЙЛ
+        '@portabletext/editor/behaviors': '@portabletext/editor',
+        'lodash': 'lodash',
+      },
     },
-    optimizeDeps: {
-      include: ['@portabletext/editor/behaviors'],
+    ssr: {
+      // Собираем всё в один кулак, чтобы не было внешних конфликтов
+      noExternal: true, 
     },
   },
 });

@@ -21,12 +21,12 @@ export default defineConfig({
   vite: {
     plugins: [tailwind()],
     ssr: {
-      // Мы захватываем все пакеты Sanity и lodash в общий билд
+      // Собираем всё в один бандл, чтобы избежать ошибок импорта
       noExternal: [/sanity/, /@sanity\//, /@portabletext\//, 'styled-components', 'lodash'],
     },
     resolve: {
-      // Принудительно используем ESM версию lodash, если она есть
       alias: {
+        // Это лечит проблемы с глубокими импортами в некоторых версиях Sanity
         'lodash': 'lodash-es',
       },
     },

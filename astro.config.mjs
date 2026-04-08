@@ -21,11 +21,14 @@ export default defineConfig({
   vite: {
     plugins: [tailwind()],
     ssr: {
-      // Это заставит Vite правильно обрабатывать проблемные библиотеки
-      noExternal: ['sanity', 'styled-components', 'lodash'],
+      // Мы захватываем все пакеты Sanity и lodash в общий билд
+      noExternal: [/sanity/, /@sanity\//, /@portabletext\//, 'styled-components', 'lodash'],
     },
-    optimizeDeps: {
-      include: ['lodash/startCase.js'],
+    resolve: {
+      // Принудительно используем ESM версию lodash, если она есть
+      alias: {
+        'lodash': 'lodash-es',
+      },
     },
   },
 });

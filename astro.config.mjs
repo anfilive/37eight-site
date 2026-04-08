@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://37eight.app',
   integrations: [
-    react(), // Добавь это обязательно!
+    react(),
     DecapCMS({
       config: {
         backend: {
@@ -16,16 +16,13 @@ export default defineConfig({
         public_folder: '/assets/blog',
         collections: [
           {
-            name: 'posts',
-            label: 'Blog Posts',
+            name: 'blog',
+            label: 'Статьи',
             folder: 'src/pages/posts',
             create: true,
             fields: [
-              { name: 'title', widget: 'string', label: 'Post Title' },
-              { name: 'publishDate', widget: 'datetime', label: 'Publish Date' },
-              { name: 'description', widget: 'string', label: 'Description', required: false },
-              { name: 'body', widget: 'markdown', label: 'Post Body' },
-              { name: 'layout', widget: 'hidden', default: '../../layouts/BlogPost.astro' },
+              { label: 'Title', name: 'title', widget: 'string' },
+              { label: 'Body', name: 'body', widget: 'markdown' },
             ],
           },
         ],

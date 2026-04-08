@@ -14,7 +14,7 @@ export default defineConfig({
       projectId: 'd4fi998k',
       dataset: 'production',
       studio: {
-        enabled: true,
+        enabled: false,
         basePath: '/admin',
       },
     }),

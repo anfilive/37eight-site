@@ -1,18 +1,17 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
-import { sanityIntegration } from 'astro-sanity';
+import tailwind from '@astrojs/tailwind';
+import { sanity } from '@sanity/astro'; // Исправлено здесь
 
 export default defineConfig({
   integrations: [
-    tailwind(),
     react(),
-    sanityIntegration({
+    tailwind(),
+    sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
-      apiVersion: '2024-04-08',
+      studioPath: '/admin', // Админка будет тут
       useCdn: false,
-      studioPath: '/admin', // Вот тут и будет жить твоя админка!
     }),
   ],
 });

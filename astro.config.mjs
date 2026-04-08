@@ -5,3 +5,4 @@ sanity({
   // studioPath: '/admin',  <-- УДАЛИТЕ ИЛИ ЗАКОММЕНТИРУЙТЕ ЭТУ СТРОКУ
   useCdn: false,
 }),
+ 

@@ -2,18 +2,20 @@ backend:
   name: git-gateway
   branch: latest
 
-media_folder: "public/assets/blog"
-public_folder: "/assets/blog"
+media_folder: "public/images"
+public_folder: "/images"
 
 collections:
   - name: "blog"
     label: "Статьи"
-    folder: "src/pages/posts"
+    folder: "src/content/blog" # Путь для шаблона Dyson
     create: true
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
     fields:
       - { label: "Заголовок", name: "title", widget: "string" }
-      - { label: "Дата", name: "publishDate", widget: "datetime" }
+      - { label: "Описание", name: "description", widget: "string" }
+      - { label: "Дата", name: "pubDate", widget: "datetime", format: "MMM DD YYYY" }
+      - { label: "Обложка (Hero Image)", name: "heroImage", widget: "image", required: false }
       - { label: "Текст", name: "body", widget: "markdown" }

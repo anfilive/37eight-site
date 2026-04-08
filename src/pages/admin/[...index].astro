@@ -1,0 +1,14 @@
+---
+import { Studio } from 'sanity';
+import config from '../../../sanity.config';
+export const prerender = false; // Важно для работы в SSR режиме
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>37.Eight Admin</title>
+  </head>
+  <body>
+    <Studio config={config} client:only="react" />
+  </body>
+</html>

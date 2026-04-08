@@ -2,6 +2,10 @@
 // src/pages/admin/[...index].astro
 import { Studio } from 'sanity';
 import config from '../../../sanity.config';
+
+// ГАРАНТИРУЕМ, что эта страница будет собрана как статика, 
+// даже если весь остальной сайт на сервере (SSR)
+export const prerender = true;
 ---
 
 <!DOCTYPE html>
@@ -9,7 +13,7 @@ import config from '../../../sanity.config';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>37.Eight | Admin Studio</title>
+    <title>37.Eight Studio</title>
     <meta name="robots" content="noindex, nofollow" />
   </head>
   <body>
@@ -18,22 +22,10 @@ import config from '../../../sanity.config';
 </html>
 
 <style is:global>
-  /* Важно: сбрасываем стили темы Dyson, чтобы админка 
-     занимала 100% экрана и выглядела чисто.
-  */
-  html,
-  body {
+  html, body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #f6f6f6;
-  }
-
-  /* Если в теме Dyson есть глобальные отступы или 
-     специфические шрифты для body, этот блок их нейтрализует внутри админки.
-  */
-  #sanity {
-    height: 100vh;
   }
 </style>

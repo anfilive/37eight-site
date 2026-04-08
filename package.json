@@ -1,26 +1,17 @@
-{
-  "name": "dyson",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/react": "^4.2.0",
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.0",
-    "@sanity/astro": "^3.1.2",
-    "@sanity/image-url": "^1.1.0",
-    "@sanity/vision": "^3.71.1",
-    "astro": "^5.1.1",
-    "gsap": "^3.12.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sanity": "^3.71.1",
-    "styled-components": "^6.1.15",
-    "tailwindcss": "^3.4.17"
-  }
-}
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
+import { sanity } from '@sanity/astro'; // Исправлено здесь
+
+export default defineConfig({
+  integrations: [
+    react(),
+    tailwind(),
+    sanity({
+      projectId: 'd4fi998k',
+      dataset: 'production',
+      studioPath: '/admin', // Админка будет тут
+      useCdn: false,
+    }),
+  ],
+});

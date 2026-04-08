@@ -21,15 +21,16 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwind()],
-    ssr: {
-      // Это ВАЖНО: говорим серверу не трогать пакеты админки
-      external: ['sanity', 'styled-components', '@portabletext/editor']
-    },
     resolve: {
       alias: {
-        // Решает проблемы с импортом lodash
-        'lodash': 'lodash'
-      }
-    }
+        // Это КРИТИЧЕСКИЙ костыль для исправления ошибки coreBehaviors в Vite 6
+        '@portabletext/editor/behaviors': '@portabletext/editor/lib/behaviors/index.js',
+        'lodash': 'lodash-es',
+      },
+    },
+    ssr: {
+      // Заставляем Vite упаковать всё это внутрь серверного билда корректно
+      noExternal: ['sanity', 'styled-components', 'lodash-es', '@portabletext/editor'],
+    },
   },
 });

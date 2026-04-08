@@ -10,15 +10,6 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.16.0",
-    "@astrojs/react": "^4.2.0",
-    "astro-decap-cms": "^0.1.0",
-    "decap-cms-app": "^3.1.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0"
+    "astro": "^4.16.0"
   }
 }

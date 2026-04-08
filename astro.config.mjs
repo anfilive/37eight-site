@@ -6,9 +6,9 @@ import sanity from '@sanity/astro';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  output: 'hybrid', // Гибридный режим — самый надежный
+  output: 'hybrid', 
   adapter: vercel({
-    webPolyfills: false // Явно отключаем то, на что ругалась ошибка
+    webPolyfills: false 
   }),
   integrations: [
     react(),

@@ -20,5 +20,12 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwind()],
+    ssr: {
+      // Это заставит Vite правильно обрабатывать проблемные библиотеки
+      noExternal: ['sanity', 'styled-components', 'lodash'],
+    },
+    optimizeDeps: {
+      include: ['lodash/startCase.js'],
+    },
   },
 });

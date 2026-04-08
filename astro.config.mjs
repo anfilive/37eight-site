@@ -6,7 +6,8 @@ import sanity from '@sanity/astro';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  output: 'hybrid', 
+  // Удалили "hybrid", теперь Astro 6 будет счастлив
+  output: 'static', 
   adapter: vercel({
     webPolyfills: false 
   }),
@@ -16,7 +17,7 @@ export default defineConfig({
     sanity({
       projectId: 'd4fi998k',
       dataset: 'production',
-      studioPath: '/admin',
+      studioPath: '/admin', // Твоя красивая админка будет тут
       useCdn: false,
     }),
   ],
